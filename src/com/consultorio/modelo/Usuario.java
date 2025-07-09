@@ -14,18 +14,18 @@ public class Usuario {
     private String nombre;
     private String correo;
 
-    // Constructor vacío
+    
     public Usuario() {
     }
 
-    // Constructor con parámetros
+    
     public Usuario(int id, String nombre, String correo) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
     }
 
-    // Getters y setters
+    
     public int getId() {
         return id;
     }

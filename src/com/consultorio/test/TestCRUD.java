@@ -8,31 +8,50 @@ package com.consultorio.test;
  *
  * @author tunjo
  */
+
+
 import com.consultorio.dao.UsuarioDAO;
 import com.consultorio.modelo.Usuario;
 import java.util.List;
+import java.util.Scanner;
+
 public class TestCRUD {
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         UsuarioDAO dao = new UsuarioDAO();
 
-        // INSERTAR
-        Usuario nuevo = new Usuario(0, "Edixon", "edixon@example.com");
+        // Agregar un nuevo usuario
+        System.out.println("=== AGREGAR USUARIO ===");
+        System.out.print("Ingrese nombre: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Ingrese correo: ");
+        String correo = sc.nextLine();
+
+        Usuario nuevo = new Usuario(0, nombre, correo);
         dao.insertarUsuario(nuevo);
 
-        // CONSULTAR
+        // Consultar usuarios
+        System.out.println("\n=== LISTA DE USUARIOS ===");
         List<Usuario> usuarios = dao.consultarUsuarios();
         for (Usuario u : usuarios) {
             System.out.println(u.getId() + " | " + u.getNombre() + " | " + u.getCorreo());
         }
 
-        // ACTUALIZAR (por ejemplo id=1)
-        Usuario actualizar = new Usuario(1, "Edixon Tunjo", "tunjo@example.com");
-        dao.actualizarUsuario(actualizar);
+        // Eliminar usuario por ID
+        System.out.println("\n=== ELIMINAR USUARIO ===");
+        System.out.print("Ingrese el ID del usuario a eliminar: ");
+        int idEliminar = sc.nextInt();
+        dao.eliminarUsuario(idEliminar);
 
-        // ELIMINAR (por ejemplo id=1)
-        dao.eliminarUsuario(1);
+        // Consultar usuarios después de eliminar
+        System.out.println("\n=== LISTA DE USUARIOS DESPUÉS DE ELIMINAR ===");
+        usuarios = dao.consultarUsuarios();
+        for (Usuario u : usuarios) {
+            System.out.println(u.getId() + " | " + u.getNombre() + " | " + u.getCorreo());
+        }
+
+        sc.close();
     }
 }
-
-

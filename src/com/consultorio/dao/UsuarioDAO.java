@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class UsuarioDAO {
 
-    // INSERTAR USUARIO
+   
     public void insertarUsuario(Usuario usuario) {
         String sql = "INSERT INTO usuarios (nombre, correo) VALUES (?, ?)";
 
@@ -32,7 +32,7 @@ public class UsuarioDAO {
         }
     }
 
-    // CONSULTAR USUARIOS
+   
     public List<Usuario> consultarUsuarios() {
         List<Usuario> lista = new ArrayList<>();
         String sql = "SELECT * FROM usuarios";
@@ -55,7 +55,7 @@ public class UsuarioDAO {
         return lista;
     }
 
-    // ACTUALIZAR USUARIO
+   
     public void actualizarUsuario(Usuario usuario) {
         String sql = "UPDATE usuarios SET nombre = ?, correo = ? WHERE id = ?";
 
@@ -73,7 +73,7 @@ public class UsuarioDAO {
         }
     }
 
-    // ELIMINAR USUARIO
+    
     public void eliminarUsuario(int id) {
         String sql = "DELETE FROM usuarios WHERE id = ?";
 
